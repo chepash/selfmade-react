@@ -1,32 +1,37 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    devtool: 'eval-cheap-module-source-map',
-    entry: './src/index.js',
+    devtool: "eval-cheap-module-source-map",
+    entry: "./src/index.js",
     devServer: {
         port: 3000,
-        contentBase: path.join(__dirname, "dist")
+        static: {
+            directory: path.join(__dirname, "dist"),
+        },
     },
+    // Configure how Webpack should handle Node.js environment variables in the browser environment
     node: {
-        fs: 'empty'
+        // Disable usage of the '__dirname' and '__filename' variables in the browser
+        __dirname: false,
+        __filename: false,
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                loader: "babel-loader",
                 options: {
-                    presets: ['@babel/preset-env']
-                }
-            }
-        ]
+                    presets: ["@babel/preset-env"],
+                },
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html',
-            inject: true
-        })
-    ]
+            template: "./index.html",
+            inject: true,
+        }),
+    ],
 };

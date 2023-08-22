@@ -1,8 +1,19 @@
 {
-  "plugins": [
-    ["@babel/plugin-transform-react-jsx", {
-      "pragma": "React.createElement",
-      "throwIfNamespace": false
-    }]
-  ]
+    "plugins": [
+        [
+            "@babel/plugin-transform-react-jsx",
+            {
+                "pragma": "React.createElement",
+                "throwIfNamespace": false
+            }
+        ]
+    ]
+    // "presets": [
+    //     [
+    //         "@babel/preset-react",
+    //         {
+    //             "runtime": "classic"
+    //         }
+    //     ]
+    // ]
 }
